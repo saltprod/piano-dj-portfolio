@@ -3,52 +3,65 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- SEO Meta Tags -->
-    <title>PIANO / DJ — Ilya | Learn Music. Make Music.</title>
+    <title>Elijah — PIANO / DJ | Learn Music. Make Music.</title>
     <meta name="description" content="Piano and DJing lessons. From zero to playing. Learn to mix. Find your sound.">
-    <meta name="author" content="Ilya">
+    <meta name="author" content="Elijah">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="PIANO / DJ — Ilya">
+    <meta property="og:title" content="ELIJAH — PIANO / DJ">
     <meta property="og:description" content="Learn music. Make music. Piano and DJing lessons.">
     <meta property="og:image" content="assets/og-image.jpg">
     <meta property="og:url" content="https://your-domain.com">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PIANO / DJ — Ilya">
+    <meta name="twitter:title" content="ELIJAH — PIANO / DJ">
     <meta name="twitter:description" content="Learn music. Make music.">
     <meta name="twitter:image" content="assets/og-image.jpg">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500&display=swap"
         rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-brand" aria-label="ELIJAH - Home">Elijah</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu" role="menubar">
+                <li role="none"><a href="#piano" role="menuitem">PIANO</a></li>
+                <li role="none"><a href="#dj" role="menuitem">DJ</a></li>
+                <li role="none"><a href="#about" role="menuitem">ABOUT</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- HERO -->
     <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="hero-logo animate-in">
-                <span class="hero-logo-piano">PIANO</span>
-                <span class="hero-logo-divider">/</span>
-                <span class="hero-logo-dj">DJ</span>
-            </div>
-            <h1 class="hero-title animate-in delay-1">Learn music.<br>Make music.</h1>
-            <a href="#piano" class="btn-start animate-in delay-2">Start</a>
+        <div class="hero-inner">
+            <p class="hero-identity animate-in">PIANO / DJ</p>
+            <h1 class="hero-name animate-in delay-1">Elijah</h1>
+            <p class="hero-tagline animate-in delay-2">Learn music. Make music.</p>
+            <a href="#piano" class="hero-cta animate-in delay-3">Start</a>
         </div>
     </section>
 
@@ -59,10 +72,10 @@
             <div class="world-overlay"></div>
         </div>
         <div class="world-content">
-            <h2 class="world-title">PIANO</h2>
-            <p class="world-tagline">From zero to playing.</p>
-            <p class="world-details">Technique · Harmony · Improvisation</p>
-            <a href="#contact" class="btn-world">Learn piano →</a>
+            <h2 class="world-title scroll-reveal">PIANO</h2>
+            <p class="world-tagline scroll-reveal delay-1">From zero to playing.</p>
+            <p class="world-details scroll-reveal delay-2">Technique · Harmony · Improvisation</p>
+            <a href="#contact" class="btn-world scroll-reveal delay-3">Learn piano →</a>
         </div>
     </section>
 
@@ -73,18 +86,18 @@
             <div class="world-overlay"></div>
         </div>
         <div class="world-content">
-            <h2 class="world-title">DJ</h2>
-            <p class="world-tagline">Learn to mix. Find your sound.</p>
-            <p class="world-details">Mixing · Beatmatching · Music Selection</p>
-            <a href="#contact" class="btn-world">Learn DJing →</a>
+            <h2 class="world-title scroll-reveal">DJ</h2>
+            <p class="world-tagline scroll-reveal delay-1">Learn to mix. Find your sound.</p>
+            <p class="world-details scroll-reveal delay-2">Mixing · Beatmatching · Music Selection</p>
+            <a href="#contact" class="btn-world scroll-reveal delay-3">Learn DJing →</a>
         </div>
     </section>
 
     <!-- ABOUT -->
     <section class="about" id="about">
-        <div class="about-content">
-            <h2 class="about-name">Elijah</h2>
-            <div class="about-text">
+        <div class="about-inner">
+            <h2 class="about-name scroll-reveal">Elijah</h2>
+            <div class="about-text scroll-reveal delay-1">
                 <p>Piano since 6.</p>
                 <p>DJing for 5 years.</p>
                 <p>Always learning. Always making music.</p>
@@ -94,14 +107,14 @@
 
     <!-- CONTACT -->
     <section class="contact" id="contact">
-        <div class="contact-content">
-            <h2 class="contact-title">Let's make music.</h2>
-            <div class="contact-links">
-                <a href="https://t.me/elijahprod" target="_blank" rel="noopener noreferrer"
+        <div class="contact-inner">
+            <h2 class="contact-title scroll-reveal">Let's make music.</h2>
+            <div class="contact-links scroll-reveal delay-1">
+                <a href="https://t.me/your_username" target="_blank" rel="noopener noreferrer"
                     class="contact-link">Telegram</a>
-                <a href="https://instagram.com/elijahgroove" target="_blank" rel="noopener noreferrer"
+                <a href="https://instagram.com/your_username" target="_blank" rel="noopener noreferrer"
                     class="contact-link">Instagram</a>
-                <a href="https://youtube.com/@elijahgroove" target="_blank" rel="noopener noreferrer"
+                <a href="https://youtube.com/@your_channel" target="_blank" rel="noopener noreferrer"
                     class="contact-link">YouTube</a>
             </div>
         </div>
@@ -109,7 +122,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2026 Elijah</p>
+        <p>© 2024 Elijah</p>
     </footer>
 
     <script src="script.js"></script>
