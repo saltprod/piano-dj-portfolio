@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:wght@400;700&family=Caveat:wght@500;600&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
@@ -39,91 +39,128 @@
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
-        <div class="nav-inner">
-            <a href="#hero" class="nav-brand" aria-label="ELIJAH - Home">Elijah</a>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="navMenu" role="menubar">
-                <li role="none"><a href="#piano" role="menuitem">PIANO</a></li>
-                <li role="none"><a href="#dj" role="menuitem">DJ</a></li>
-                <li role="none"><a href="#about" role="menuitem">ABOUT</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="book-stage">
+        <a href="#hero" class="book-brand" data-leaf="0" aria-label="ELIJAH - Home">ELIJAH</a>
 
-    <!-- HERO -->
-    <section class="hero" id="hero">
-        <div class="hero-inner">
-            <p class="hero-identity animate-in">PIANO / DJ</p>
-            <h1 class="hero-name animate-in delay-1">Elijah</h1>
-            <p class="hero-tagline animate-in delay-2">Learn music. Make music.</p>
-            <a href="#piano" class="hero-cta animate-in delay-3">Start</a>
-        </div>
-    </section>
+        <button class="book-arrow prev" id="prevBtn" aria-label="Previous page">
+            <span aria-hidden="true">&#8249;</span>
+        </button>
+        <button class="book-arrow next" id="nextBtn" aria-label="Next page">
+            <span aria-hidden="true">&#8250;</span>
+        </button>
 
-    <!-- PIANO SECTION -->
-    <section class="world-section piano-section" id="piano">
-        <div class="world-bg">
-            <img src="assets/piano-section.jpg" alt="Piano keys close-up" class="world-image" loading="lazy">
-            <div class="world-overlay"></div>
-        </div>
-        <div class="world-content">
-            <h2 class="world-title scroll-reveal">PIANO</h2>
-            <p class="world-tagline scroll-reveal delay-1">From zero to playing.</p>
-            <p class="world-details scroll-reveal delay-2">Technique · Harmony · Improvisation</p>
-            <a href="#contact" class="btn-world scroll-reveal delay-3">Learn piano →</a>
-        </div>
-    </section>
+        <div class="book" id="book">
 
-    <!-- DJ SECTION -->
-    <section class="world-section dj-section" id="dj">
-        <div class="world-bg">
-            <img src="assets/dj-section.jpg" alt="DJ equipment close-up" class="world-image" loading="lazy">
-            <div class="world-overlay"></div>
-        </div>
-        <div class="world-content">
-            <h2 class="world-title scroll-reveal">DJ</h2>
-            <p class="world-tagline scroll-reveal delay-1">Learn to mix. Find your sound.</p>
-            <p class="world-details scroll-reveal delay-2">Mixing · Beatmatching · Music Selection</p>
-            <a href="#contact" class="btn-world scroll-reveal delay-3">Learn DJing →</a>
-        </div>
-    </section>
+            <!-- SPREAD 1 -->
+            <div class="spread" data-spread="0">
+                <article class="leaf paper" id="hero" data-leaf-index="0">
+                    <span class="leaf-index"></span>
+                    <div class="leaf-inner leaf-inner--hero">
+                        <p class="leaf-kicker">PIANO / DJ</p>
+                        <h1 class="leaf-name leaf-name--xl">Elijah</h1>
+                        <p class="leaf-tagline">Learn music. Make music.</p>
+                        <hr class="leaf-rule">
+                        <a href="#piano" class="leaf-cta" data-leaf="1">Start</a>
+                        <p class="handwritten">learn music. make music.</p>
+                    </div>
+                </article>
 
-    <!-- ABOUT -->
-    <section class="about" id="about">
-        <div class="about-inner">
-            <h2 class="about-name scroll-reveal">Elijah</h2>
-            <div class="about-text scroll-reveal delay-1">
-                <p>Piano since 6.</p>
-                <p>DJing for 5 years.</p>
-                <p>Always learning. Always making music.</p>
+                <article class="leaf paper" id="piano" data-leaf-index="1">
+                    <span class="leaf-index"></span>
+                    <div class="leaf-inner">
+                        <h2 class="leaf-name">Piano</h2>
+                        <p class="leaf-tagline">From zero to playing.</p>
+                        <ul class="leaf-list">
+                            <li>Technique</li>
+                            <li>Harmony</li>
+                            <li>Improvisation</li>
+                        </ul>
+                        <figure class="photo-tape">
+                            <img src="assets/piano-section.jpg" alt="Piano keys close-up" class="photo-img"
+                                loading="lazy">
+                        </figure>
+                        <a href="#contact" class="leaf-cta" data-leaf="4">Learn piano →</a>
+                    </div>
+                </article>
             </div>
-        </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-        <div class="contact-inner">
-            <h2 class="contact-title scroll-reveal">Let's make music.</h2>
-            <div class="contact-links scroll-reveal delay-1">
-                <a href="https://t.me/elijahprod" target="_blank" rel="noopener noreferrer"
-                    class="contact-link">Telegram</a>
-                <a href="https://instagram.com/elijahgroove" target="_blank" rel="noopener noreferrer"
-                    class="contact-link">Instagram</a>
-                <a href="https://youtube.com/@elijahgroove" target="_blank" rel="noopener noreferrer"
-                    class="contact-link">YouTube</a>
+            <!-- SPREAD 2 -->
+            <div class="spread" data-spread="1">
+                <article class="leaf paper" id="dj" data-leaf-index="2">
+                    <span class="leaf-index"></span>
+                    <div class="leaf-inner">
+                        <h2 class="leaf-name">DJ</h2>
+                        <p class="leaf-tagline">Learn to mix. Find your sound.</p>
+                        <ul class="leaf-list">
+                            <li>Mixing</li>
+                            <li>Beatmatching</li>
+                            <li>Music Selection</li>
+                        </ul>
+                        <figure class="photo-tape photo-tape--right">
+                            <img src="assets/dj-section.jpg" alt="DJ equipment close-up" class="photo-img"
+                                loading="lazy">
+                        </figure>
+                        <a href="#contact" class="leaf-cta" data-leaf="4">Learn DJing →</a>
+                    </div>
+                </article>
+
+                <article class="leaf paper" id="about" data-leaf-index="3">
+                    <span class="leaf-index"></span>
+                    <div class="leaf-inner">
+                        <h2 class="leaf-name">Elijah</h2>
+                        <hr class="leaf-rule">
+                        <div class="about-bio">
+                            <p>Piano since 6.</p>
+                            <p>DJing for 5 years.</p>
+                            <p>Always learning. Always making music.</p>
+                        </div>
+                    </div>
+                </article>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>© 2024 Elijah</p>
-    </footer>
+            <!-- SPREAD 3 -->
+            <div class="spread" data-spread="2">
+                <article class="leaf paper" id="contact" data-leaf-index="4">
+                    <span class="leaf-index"></span>
+                    <div class="leaf-inner">
+                        <h2 class="leaf-name leaf-name--md">Let's make music.</h2>
+                        <hr class="leaf-rule">
+                        <div class="contact-links">
+                            <a href="https://t.me/elijahprod" target="_blank" rel="noopener noreferrer"
+                                class="contact-link">Telegram</a>
+                            <a href="https://instagram.com/elijahgroove" target="_blank" rel="noopener noreferrer"
+                                class="contact-link">Instagram</a>
+                            <a href="https://youtube.com/@elijahgroove" target="_blank" rel="noopener noreferrer"
+                                class="contact-link">YouTube</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="leaf paper" id="colophon" data-leaf-index="5">
+                    <span class="leaf-index"></span>
+                    <div class="leaf-inner leaf-inner--colophon">
+                        <p class="leaf-kicker">FIN.</p>
+                        <hr class="leaf-rule">
+                        <p class="footer-credit">© 2024 Elijah</p>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+
+        <div class="book-hud">
+            <p class="book-hint">
+                <span class="hint-desktop">Use ← → keys<br>or swipe</span>
+                <span class="hint-mobile">Swipe to turn the page</span>
+            </p>
+            <div class="book-dots" id="bookDots">
+                <button class="dot" data-spread="0" aria-label="Go to spread 1"></button>
+                <button class="dot" data-spread="1" aria-label="Go to spread 2"></button>
+                <button class="dot" data-spread="2" aria-label="Go to spread 3"></button>
+            </div>
+            <a href="#contact" class="book-contact-tab" data-leaf="4">Contact</a>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
