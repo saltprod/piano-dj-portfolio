@@ -37,7 +37,10 @@ function render() {
     const spreadIndex = Math.floor(state.currentLeaf / 2);
 
     spreads.forEach((spread, i) => {
-        spread.classList.toggle('active', i === spreadIndex);
+        const active = i === spreadIndex;
+        spread.classList.toggle('active', active);
+        spread.classList.toggle('spread--before', !active && i < spreadIndex);
+        spread.classList.toggle('spread--after', !active && i > spreadIndex);
     });
 
     leaves.forEach((leaf, i) => {
@@ -123,26 +126,59 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 // ============================================================================
-// Touch swipe (mobile page turn)
+// Touch swipe (mobile page turn — vertical, so it doesn't collide with the
+// browser/OS horizontal edge-swipe "back" gesture). Desktop keeps arrows/keys
+// only; this handler no-ops there.
 // ============================================================================
+const SWIPE_DISTANCE = 60; // px, always triggers regardless of speed
+const SWIPE_FLICK_DISTANCE = 24; // px, triggers if fast enough
+const SWIPE_FLICK_VELOCITY = 0.5; // px/ms
+
 let touchStartX = 0;
 let touchStartY = 0;
+let touchStartTime = 0;
+let touchTargetLeaf = null;
 
 book.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].clientX;
-    touchStartY = e.changedTouches[0].clientY;
+    if (isDesktop()) return;
+    const touch = e.changedTouches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    touchStartTime = e.timeStamp;
+    touchTargetLeaf = touch.target.closest('.leaf');
 }, { passive: true });
 
 book.addEventListener('touchend', (e) => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (isDesktop()) return;
 
-    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - touchStartX;
+    const dy = touch.clientY - touchStartY;
+    const dt = Math.max(e.timeStamp - touchStartTime, 1);
+    const distance = Math.abs(dy);
+    const velocity = distance / dt;
 
-    if (dx < 0) {
-        next();
+    if (Math.abs(dy) < Math.abs(dx)) return;
+
+    const meetsThreshold = distance > SWIPE_DISTANCE ||
+        (distance > SWIPE_FLICK_DISTANCE && velocity > SWIPE_FLICK_VELOCITY);
+    if (!meetsThreshold) return;
+
+    // If the leaf's own content is scrollable, only hijack the swipe once
+    // the leaf is already scrolled to the boundary in that direction —
+    // otherwise let the native in-leaf scroll happen.
+    const leaf = touchTargetLeaf;
+    if (leaf && leaf.scrollHeight > leaf.clientHeight + 1) {
+        const atTop = leaf.scrollTop <= 2;
+        const atBottom = leaf.scrollTop + leaf.clientHeight >= leaf.scrollHeight - 2;
+        if (dy < 0 && !atBottom) return; // swiping up, more content below
+        if (dy > 0 && !atTop) return; // swiping down, more content above
+    }
+
+    if (dy < 0) {
+        next(); // swipe up -> next page
     } else {
-        prev();
+        prev(); // swipe down -> previous page
     }
 }, { passive: true });
 
