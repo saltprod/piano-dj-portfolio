@@ -15,7 +15,8 @@
     --paper-edge: #d8c9a4;
     --ink: #26201a;
     --ink-soft: #55503f;
-    --ink-faint: #8c8266;
+    --ink-caption: #493c28;
+    --ink-faint: #7a6b4a;
     --spine: #17110b;
     --spine-light: #2c2115;
 
@@ -70,6 +71,33 @@
             99% 10%, 100% 20%, 98.5% 30%, 100% 40%, 99% 50%, 100% 60%, 98.2% 70%, 100% 80%, 99% 90%,
             100% 98.5%, 90% 100%, 80% 98.5%, 70% 100%, 60% 98.7%, 50% 100%, 40% 98.5%, 30% 100%, 20% 98.5%, 10% 100%, 0% 98.5%,
             1% 90%, 0% 80%, 1.8% 70%, 0% 60%, 1% 50%, 0% 40%, 0.5% 30%, 1.8% 20%, 0% 10%);
+
+    /* Alternate torn-edge shapes so each spread's deckle looks different, not repeated */
+    --torn-left-b: polygon(0% 0.5%, 10% 1.8%, 20% 0%, 30% 2.2%, 40% 0.4%, 50% 1.6%, 60% 0.2%, 70% 2%, 80% 0.6%, 90% 1.2%, 100% 0%,
+            100% 100%,
+            90% 98.2%, 80% 100%, 70% 99%, 60% 97.8%, 50% 100%, 40% 98.5%, 30% 100%, 20% 99%, 10% 100%, 0% 98.5%,
+            0.6% 90%, 0% 80%, 2% 70%, 0.4% 60%, 1.7% 50%, 0% 40%, 2.2% 30%, 0.5% 20%, 1.3% 10%);
+    --torn-right-b: polygon(100% 0.5%, 90% 1.8%, 80% 0%, 70% 2.2%, 60% 0.4%, 50% 1.6%, 40% 0.2%, 30% 2%, 20% 0.6%, 10% 1.2%, 0% 0%,
+            0% 100%,
+            10% 98.2%, 20% 100%, 30% 99%, 40% 97.8%, 50% 100%, 60% 98.5%, 70% 100%, 80% 99%, 90% 100%, 100% 98.5%,
+            99.4% 90%, 100% 80%, 98% 70%, 99.6% 60%, 98.3% 50%, 100% 40%, 97.8% 30%, 99.5% 20%, 98.7% 10%);
+    --torn-all-b: polygon(0% 0.5%, 10% 1.8%, 20% 0%, 30% 2.2%, 40% 0.4%, 50% 1.6%, 60% 0.2%, 70% 2%, 80% 0.6%, 90% 1.2%, 100% 0.8%,
+            98.7% 10%, 99.5% 20%, 97.8% 30%, 100% 40%, 98.3% 50%, 99.6% 60%, 98% 70%, 100% 80%, 99.4% 90%,
+            100% 99%, 90% 98.2%, 80% 100%, 70% 99%, 60% 97.8%, 50% 100%, 40% 98.5%, 30% 100%, 20% 99%, 10% 100%, 0% 98.5%,
+            0.6% 90%, 0% 80%, 2% 70%, 0.4% 60%, 1.7% 50%, 0% 40%, 2.2% 30%, 0.5% 20%, 1.3% 10%);
+
+    --torn-left-c: polygon(0% 2%, 10% 0.3%, 20% 1.2%, 30% 0%, 40% 2.4%, 50% 0.6%, 60% 1%, 70% 1.8%, 80% 0.2%, 90% 1.5%, 100% 0%,
+            100% 100%,
+            90% 100%, 80% 98.7%, 70% 100%, 60% 99%, 50% 97.6%, 40% 100%, 30% 99%, 20% 100%, 10% 98.4%, 0% 100%,
+            1.2% 90%, 0.2% 80%, 1.8% 70%, 0% 60%, 2.4% 50%, 0.6% 40%, 1% 30%, 0% 20%, 1.6% 10%);
+    --torn-right-c: polygon(100% 2%, 90% 0.3%, 80% 1.2%, 70% 0%, 60% 2.4%, 50% 0.6%, 40% 1%, 30% 1.8%, 20% 0.2%, 10% 1.5%, 0% 0%,
+            0% 100%,
+            10% 100%, 20% 98.7%, 30% 100%, 40% 99%, 50% 97.6%, 60% 100%, 70% 99%, 80% 100%, 90% 98.4%, 100% 100%,
+            98.8% 90%, 99.8% 80%, 98.2% 70%, 100% 60%, 97.6% 50%, 99.4% 40%, 99% 30%, 100% 20%, 98.4% 10%);
+    --torn-all-c: polygon(0% 2%, 10% 0.3%, 20% 1.2%, 30% 0%, 40% 2.4%, 50% 0.6%, 60% 1%, 70% 1.8%, 80% 0.2%, 90% 1.5%, 100% 0.4%,
+            98.4% 10%, 100% 20%, 99% 30%, 99.4% 40%, 97.6% 50%, 100% 60%, 98.2% 70%, 99.8% 80%, 98.8% 90%,
+            100% 99.5%, 90% 100%, 80% 98.7%, 70% 100%, 60% 99%, 50% 97.6%, 40% 100%, 30% 99%, 20% 100%, 10% 98.4%, 0% 100%,
+            1.2% 90%, 0.2% 80%, 1.8% 70%, 0% 60%, 2.4% 50%, 0.6% 40%, 1% 30%, 0% 20%, 1.6% 10%);
 }
 
 /* ==========================================================================
@@ -223,7 +251,10 @@ button {
     content: '';
     position: absolute;
     inset: -14px -10px;
-    background: linear-gradient(180deg, var(--spine-light), var(--spine));
+    background:
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.12) 0, rgba(0, 0, 0, 0.12) 1px, transparent 1px, transparent 3px),
+        linear-gradient(180deg, var(--spine-light), var(--spine));
     border-radius: 10px;
     box-shadow:
         0 25px 60px rgba(0, 0, 0, 0.6),
@@ -271,29 +302,55 @@ button {
 }
 
 .leaf:first-child {
-    clip-path: var(--torn-left);
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.12);
 }
 
 .leaf:last-child {
-    clip-path: var(--torn-right);
     box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.12);
+}
+
+/* Torn-edge shape varies per spread so the deckle isn't identical on every page */
+.spread[data-spread="0"] .leaf:first-child {
+    clip-path: var(--torn-left);
+}
+
+.spread[data-spread="0"] .leaf:last-child {
+    clip-path: var(--torn-right);
+}
+
+.spread[data-spread="1"] .leaf:first-child {
+    clip-path: var(--torn-left-b);
+}
+
+.spread[data-spread="1"] .leaf:last-child {
+    clip-path: var(--torn-right-b);
+}
+
+.spread[data-spread="2"] .leaf:first-child {
+    clip-path: var(--torn-left-c);
+}
+
+.spread[data-spread="2"] .leaf:last-child {
+    clip-path: var(--torn-right-c);
 }
 
 .paper {
     background-color: var(--paper);
     background-image:
         var(--paper-grain),
-        repeating-linear-gradient(75deg, rgba(60, 45, 20, 0.06) 0, rgba(60, 45, 20, 0.06) 1px, transparent 1px, transparent 70px),
-        repeating-linear-gradient(165deg, rgba(255, 250, 235, 0.35) 0, rgba(255, 250, 235, 0.35) 1px, transparent 1px, transparent 95px),
-        radial-gradient(ellipse 45% 32% at 8% 10%, rgba(110, 85, 45, 0.32), transparent 60%),
-        radial-gradient(ellipse 38% 28% at 94% 90%, rgba(110, 85, 45, 0.28), transparent 62%),
-        radial-gradient(ellipse 28% 22% at 88% 12%, rgba(90, 65, 30, 0.22), transparent 60%),
-        radial-gradient(ellipse 22% 18% at 4% 85%, rgba(90, 65, 30, 0.2), transparent 58%),
-        radial-gradient(ellipse 30% 24% at 55% 96%, rgba(80, 60, 30, 0.16), transparent 60%),
-        radial-gradient(ellipse 130% 110% at 50% 50%, transparent 55%, rgba(20, 14, 6, 0.28) 100%);
-    background-blend-mode: multiply, multiply, soft-light, multiply, multiply, multiply, multiply, multiply, multiply;
-    filter: sepia(0.1) contrast(1.06);
+        repeating-linear-gradient(75deg, rgba(60, 45, 20, 0.08) 0, rgba(60, 45, 20, 0.08) 1px, transparent 1px, transparent 60px),
+        repeating-linear-gradient(165deg, rgba(255, 250, 235, 0.4) 0, rgba(255, 250, 235, 0.4) 1px, transparent 1px, transparent 85px),
+        repeating-linear-gradient(8deg, rgba(60, 45, 20, 0.05) 0, rgba(60, 45, 20, 0.05) 1px, transparent 1px, transparent 130px),
+        radial-gradient(ellipse 45% 32% at 8% 10%, rgba(110, 85, 45, 0.36), transparent 60%),
+        radial-gradient(ellipse 38% 28% at 94% 90%, rgba(110, 85, 45, 0.32), transparent 62%),
+        radial-gradient(ellipse 28% 22% at 88% 12%, rgba(90, 65, 30, 0.26), transparent 60%),
+        radial-gradient(ellipse 22% 18% at 4% 85%, rgba(90, 65, 30, 0.24), transparent 58%),
+        radial-gradient(ellipse 30% 24% at 55% 96%, rgba(80, 60, 30, 0.18), transparent 60%),
+        radial-gradient(ellipse 10% 8% at 35% 55%, rgba(70, 50, 25, 0.22), transparent 65%),
+        radial-gradient(ellipse 7% 6% at 68% 30%, rgba(70, 50, 25, 0.18), transparent 65%),
+        radial-gradient(ellipse 140% 120% at 50% 50%, transparent 48%, rgba(20, 14, 6, 0.34) 100%);
+    background-blend-mode: multiply, multiply, soft-light, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply;
+    filter: sepia(0.12) contrast(1.08);
 }
 
 .leaf-inner {
@@ -314,7 +371,8 @@ button {
     font-size: var(--font-size-xs);
     font-weight: 700;
     letter-spacing: 0.1em;
-    color: var(--ink-faint);
+    color: var(--ink-caption);
+    text-shadow: 0 0 4px rgba(255, 250, 235, 0.65), 0 1px 1px rgba(255, 250, 235, 0.5);
 }
 
 /* ==========================================================================
@@ -325,7 +383,8 @@ button {
     font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--ink-soft);
+    color: var(--ink-caption);
+    text-shadow: 0 1px 1px rgba(255, 250, 235, 0.45);
     margin-bottom: var(--spacing-sm);
 }
 
@@ -394,7 +453,7 @@ button {
     font-size: var(--font-size-xs);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--ink-soft);
+    color: var(--ink-caption);
     margin-bottom: var(--spacing-sm);
 }
 
@@ -481,7 +540,8 @@ button {
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ink-soft);
+    color: var(--ink-caption);
+    text-shadow: 0 1px 1px rgba(255, 250, 235, 0.45);
     border-bottom: 1px solid transparent;
     padding-bottom: 2px;
     transition: var(--transition-base);
@@ -495,7 +555,8 @@ button {
 .footer-credit {
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--ink-faint);
+    color: var(--ink-caption);
+    text-shadow: 0 0 4px rgba(255, 250, 235, 0.65), 0 1px 1px rgba(255, 250, 235, 0.5);
     letter-spacing: 0.05em;
 }
 
@@ -602,9 +663,16 @@ button {
         display: flex;
     }
 
-    .leaf:first-child,
-    .leaf:last-child {
+    .spread[data-spread="0"] .leaf {
         clip-path: var(--torn-all);
+    }
+
+    .spread[data-spread="1"] .leaf {
+        clip-path: var(--torn-all-b);
+    }
+
+    .spread[data-spread="2"] .leaf {
+        clip-path: var(--torn-all-c);
     }
 
     .leaf-inner {
